@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const mongoDB = require('./db');
 const cors = require('cors');
 
 // ✅ Use cors middleware to allow frontend to call backend
 app.use(cors({
-  origin: ['http://localhost:3000','https://go-food-smoky.vercel.app/'
-  ]
+  origin: ['http://localhost:3000','https://go-food-smoky.vercel.app','https://go-food-*.vercel.app'
+  ],credentials: true
 }));
 
 // ✅ Middleware to parse JSON
