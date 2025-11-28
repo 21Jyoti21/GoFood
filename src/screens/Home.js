@@ -10,16 +10,32 @@ export default function Home() {
   const [foodItem, setFoodItem] = useState([]);
 
   const loadData = async () => {
-    let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/foodData`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    response = await response.json();
-    setFoodItem(response[0]);
-    setFoodCat(response[1]);
-    console.log(response[0], response[1]);
+    try {
+    // Fallback URL if env variable not set
+      const backendURL = process.env.REACT_APP_BACKEND_URL || 'https://gofood-zgwz.onrender.com';
+      
+      console.log("Backend URL:", backendURL); // Debug
+      
+      let response = await fetch(`${backendURL}/api/foodData`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      
+      console.log("Response status:", response.status);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      response = await response.json();
+      setFoodItem(response[0]);
+      setFoodCat(response[1]);
+      console.log("✅ Data loaded:", response[0], response[1]);
+    } catch (error) {
+      console.error("❌ Error:", error);
+    }
   };
 
   useEffect(() => {
