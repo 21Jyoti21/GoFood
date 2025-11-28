@@ -5,7 +5,7 @@ export default function MyOrder() {
   const [orderData, setOrderData] = useState(null);
 
   const fetchMyOrder = async () => {
-    const res = await fetch("${process.env.REACT_APP_BACKEND_URL}/api/myOrderData", {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/myOrderData`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
