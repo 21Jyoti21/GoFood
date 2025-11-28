@@ -6,8 +6,9 @@ const cors = require('cors');
 
 // ✅ Use cors middleware to allow frontend to call backend
 app.use(cors({
-  origin: ['http://localhost:3000','https://go-food-git-main-21jyoti21s-projects.vercel.app','https://go-food-smoky.vercel.app','https://go-food-*.vercel.app'
-  ],credentials: true
+  // origin: ['http://localhost:3000','https://go-food-git-main-21jyoti21s-projects.vercel.app','https://go-food-smoky.vercel.app','https://go-food-*.vercel.app'],
+  origin:true,
+  credentials: true
 }));
 
 // ✅ Middleware to parse JSON
