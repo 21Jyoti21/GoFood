@@ -1,13 +1,11 @@
-// import logo from './logo.svg';
 import './App.css';
 import Home from './screens/Home';
-// import Navbar from './components/Navbar';
 import React from "react";
 import Login from './screens/Login';
 import '../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
-import Cart from './screens/Cart';   // make sure path is correct
+import Cart from './screens/Cart';
 import MyOrder from "./screens/MyOrder";
 
 
