@@ -27,7 +27,6 @@ export default function Signup() {
     if (!json.success) {
       alert("Enter Valid Credentials");
     } else {
-      // ✅ Save token and redirect to Home
       localStorage.setItem("authToken", json.authToken);
       console.log("Token:", localStorage.getItem("authToken"));
       navigate("/");
