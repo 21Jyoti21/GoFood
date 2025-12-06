@@ -5,9 +5,6 @@ const { body, validationResult } = require('express-validator');
 const jwt=require("jsonwebtoken");
 const bcrypt=require("bcryptjs");
 const jwtSecret="MyNameIsJyoti"
-// ------------------------------------
-// ✅ Route: Create New User (Signup)
-// ------------------------------------
 router.post(
   '/createuser',
   [
@@ -38,10 +35,6 @@ router.post(
     }
   }
 );
-
-// ------------------------------------
-// ✅ Route: Login User
-// ------------------------------------
 router.post('/loginuser', [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password must be at least 5 characters').isLength({ min: 5 })
@@ -53,13 +46,10 @@ router.post('/loginuser', [
   const { email, password } = req.body;
 
   try {
-    // 🔍 Find user by email
     const userData = await User.findOne({ email });
     if (!userData) {
       return res.status(400).json({ errors: "Try logging in with correct credentials" });
     }
-
-    // 🔐 Check password match (you can hash this with bcrypt)
     const pwdCompare=await bcrypt.compare(password,userData.password)
     if (!pwdCompare) {
       return res.status(400).json({ errors: "Try logging in with correct credentials" });
