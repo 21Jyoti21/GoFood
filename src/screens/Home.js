@@ -11,10 +11,9 @@ export default function Home() {
 
   const loadData = async () => {
     try {
-    // Fallback URL if env variable not set
       const backendURL = process.env.REACT_APP_BACKEND_URL || 'https://gofood-zgwz.onrender.com';
       
-      console.log("Backend URL:", backendURL); // Debug
+      console.log("Backend URL:", backendURL);
       
       let response = await fetch(`${backendURL}/api/foodData`, {
         method: "GET",
@@ -32,9 +31,9 @@ export default function Home() {
       response = await response.json();
       setFoodItem(response[0]);
       setFoodCat(response[1]);
-      console.log("✅ Data loaded:", response[0], response[1]);
+      console.log("Data loaded:", response[0], response[1]);
     } catch (error) {
-      console.error("❌ Error:", error);
+      console.error("Error:", error);
     }
   };
 
@@ -144,9 +143,7 @@ export default function Home() {
                         className="col-12 col-md-6 col-lg-3"
                       >
                         <Card
-                          // foodName={filterItems.name}
                           options={filterItems.options[0]}
-                          // imgSrc={filterItems.img}
                           foodItem={filterItems}
                         />
                       </div>
