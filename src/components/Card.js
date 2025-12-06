@@ -14,7 +14,6 @@ export default function Card(props) {
   const handleAddToCart = () => {
     let food = null;
 
-    // check if the item is already in cart
     for (const item of data) {
       if (item.id === props.foodItem._id) {
         food = item;
@@ -61,7 +60,6 @@ export default function Card(props) {
     setSize(priceRef.current.value);
   }, []);
 
-  // 👇 log cart updates for debugging
   useEffect(() => {
     console.log("Cart updated:", data);
   }, [data]);
