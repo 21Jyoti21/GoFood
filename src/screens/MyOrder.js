@@ -16,7 +16,7 @@ export default function MyOrder() {
     });
 
     const data = await res.json();
-    setOrderData(data); // data = { orderData: { email, order_data: [...] } }
+    setOrderData(data);
   };
 
   useEffect(() => {
