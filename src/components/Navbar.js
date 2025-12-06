@@ -2,15 +2,15 @@ import React,{useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Badge from 'react-bootstrap/Badge';
 import Modal from "../Modal";
-import { useCart } from './ContextReducer'; // adjust the path as needed
+import { useCart } from './ContextReducer';
 import Cart from "../screens/Cart";
 export default function Navbar() {
   const [cartView,setCartView]=useState(false)
   let data=useCart();
   const navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.removeItem("authToken");   // clear token
-    navigate("/");                          // ✅ redirect to home
+    localStorage.removeItem("authToken");
+    navigate("/");
   };
 
   return (
@@ -48,7 +48,6 @@ export default function Navbar() {
               )}
             </ul>
 
-            {/* ✅ Auth buttons */}
             {localStorage.getItem("authToken") ? (
               <div>
               <div className="btn bg-white text-success mx-2" onClick={()=>{setCartView(true)}}>
