@@ -46,16 +46,24 @@ export default function Cart() {
             </tr>
           </thead>
           <tbody>
-            {data.map((food, index) => (
-              <tr>
-                <th scope='row' >{index + 1}</th>
-                <td >{food.name}</td>
-                <td>{food.qty}</td>
-                <td>{food.size}</td>
-                <td>{food.price}</td>
-                <td ><button type="button" className="btn p-0"><Delete onClick={() => { dispatch({ type: "REMOVE", index: index }) }} /></button> </td></tr>
-            ))}
-          </tbody>
+          {data.map((food, index) => (
+            <tr key={`${food.id}-${food.size}`}>
+              <th scope='row'>{index + 1}</th>
+              <td>{food.name}</td>
+              <td>{food.qty}</td>
+              <td>{food.size}</td>
+              <td>{food.price}</td>
+              <td>
+                <button type="button" className="btn p-0">
+                  <Delete
+                    onClick={() => dispatch({ type: "REMOVE", index })}
+                  />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+
         </table>
         <div><h1 className='fs-2'>Total Price: {totalPrice}/-</h1></div>
         <div>
